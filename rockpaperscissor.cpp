@@ -4,13 +4,12 @@
 
 using namespace std;
 
-// Function to generate computer's choice
+//  generate computer's choice
 int generateComputerChoice() {
     return rand() % 3 + 1; // Generate a random number between 1 and 3
 }
 
 // Function to determine the winner of a round
-// Returns 0 for a draw, 1 for player win, 2 for computer win
 int determineWinner(int playerChoice, int computerChoice) 
 {
     if (playerChoice == computerChoice)
@@ -30,28 +29,27 @@ int main()
     int computerPoints = 0;
     int level = 1;
 
-    cout << "Welcome to Rock-Paper-Scissors game!\n";
-    cout << "Level " << level << endl;
+    cout << "************************Welcome to Rock-Paper-Scissors game!************************\n";
+    cout << "---->Level " << level <<"  <----"<< endl;
     while (playerPoints < 5 && computerPoints < 5) {
-        // Player's choice
         int playerChoice;
         cout << "Enter your choice (1 for Rock, 2 for Paper, 3 for Scissors): ";
-        cin >> playerChoice;
+        cin >> playerChoice;             //// Player's choice
 
-        // Validating player's choice
-        while (playerChoice < 1 || playerChoice > 3) {
+       
+        while (playerChoice < 1 || playerChoice > 3) {                    //  checking INVALID choice
             cout << "Invalid choice! Please enter 1, 2, or 3: ";
             cin >> playerChoice;
         }
 
-        // Computer's choice
-        int computerChoice = generateComputerChoice();
+       
+        int computerChoice = generateComputerChoice();                   //  Computer's choice
 
-        // Determine the winner
-        int winner = determineWinner(playerChoice, computerChoice);
+        
+        int winner = determineWinner(playerChoice, computerChoice);           // RETURN the winner
 
-        // Display the choices
-       cout << "You chose ";
+       
+       cout << "You chose ";                                              // Display 
         switch (playerChoice) {
             case 1:
                 cout << "Rock. ";
@@ -76,8 +74,8 @@ int main()
                 break;
         }
 
-        // Display the winner and update points
-        if (winner == 0)
+        
+        if (winner == 0)                             // Display the winner and update points
             cout << "It's a draw!\n";
         else if (winner == 1) {
             cout << "You win this round!\n";
@@ -88,14 +86,14 @@ int main()
         }
 
         // Display current points
-        cout << "Player points: " << playerPoints << ", Computer points: " << computerPoints << endl;
+        cout << "Player points: " << playerPoints << ",     Computer points: " << computerPoints << endl;
 
         // Check if level up is needed
         if (playerPoints == 5 && level < 3) {
             level++;
             playerPoints = 0;
             computerPoints = 0;
-            cout << "Congratulations! You've reached level " << level << endl;
+            cout << "****************Congratulations! You've reached level " << level << "****************"<< endl;
         }
 
         // Adjust computer's winning chances based on level
