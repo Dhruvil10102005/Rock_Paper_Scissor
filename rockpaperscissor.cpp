@@ -4,7 +4,7 @@
 
 using namespace std;
 
-// Function to generate computer's choice
+// HIiiiiiiiiiiiiiiiiiiii
 int generateComputerChoice() {
     return rand() % 3 + 1; // Generate a random number between 1 and 3
 }
