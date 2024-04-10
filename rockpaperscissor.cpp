@@ -3,7 +3,9 @@
 #include <cstdlib>
 
 using namespace std;
-
+//23cs061
+//23cs071
+//23cs082
 // HIiiiiiiiiiiiiiiiiiiii
 int generateComputerChoice() {
     return rand() % 3 + 1; // Generate a random number between 1 and 3
