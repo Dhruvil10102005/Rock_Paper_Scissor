@@ -51,3 +51,65 @@ int main()
         int winner = determineWinner(playerChoice, computerChoice);
 
         // Display the choices
+       cout << "You chose ";
+        switch (playerChoice) {
+            case 1:
+                cout << "Rock. ";
+                break;
+            case 2:
+                cout << "Paper. ";
+                break;
+            case 3:
+                cout << "Scissors. ";
+                break;
+        }
+        cout << "Computer chose ";
+        switch (computerChoice) {
+            case 1:
+                cout << "Rock. ";
+                break;
+            case 2:
+                cout << "Paper. ";
+                break;
+            case 3:
+                cout << "Scissors. ";
+                break;
+        }
+
+        // Display the winner and update points
+        if (winner == 0)
+            cout << "It's a draw!\n";
+        else if (winner == 1) {
+            cout << "You win this round!\n";
+            playerPoints++;
+        } else {
+            cout << "Computer wins this round!\n";
+            computerPoints++;
+        }
+
+        // Display current points
+        cout << "Player points: " << playerPoints << ", Computer points: " << computerPoints << endl;
+
+        // Check if level up is needed
+        if (playerPoints == 5 && level < 3) {
+            level++;
+            playerPoints = 0;
+            computerPoints = 0;
+            cout << "Congratulations! You've reached level " << level << endl;
+        }
+
+        // Adjust computer's winning chances based on level
+        int chanceToWin = 50 / level; // Chance of winning in percent
+        int randomNumber = rand() % 100 + 1; // Generate a random number between 1 and 100
+        if (randomNumber <= chanceToWin)
+            computerChoice = playerChoice; // Computer chooses the same as player
+    }
+
+    // Display the final winner
+    if (playerPoints == 5)
+        cout << "Congratulations! You win the game!\n";
+    else
+        cout << "Computer wins the game. Better luck next time!\n";
+
+    return 0;
+}
