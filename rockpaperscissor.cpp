@@ -22,4 +22,32 @@ int determineWinner(int playerChoice, int computerChoice)
     else
         return 2; // Computer wins
 }
+int main() 
+{
+    srand(time(0)); // Seed the random number generator
 
+    int playerPoints = 0;
+    int computerPoints = 0;
+    int level = 1;
+
+    cout << "Welcome to Rock-Paper-Scissors game!\n";
+    cout << "Level " << level << endl;
+    while (playerPoints < 5 && computerPoints < 5) {
+        // Player's choice
+        int playerChoice;
+        cout << "Enter your choice (1 for Rock, 2 for Paper, 3 for Scissors): ";
+        cin >> playerChoice;
+
+        // Validating player's choice
+        while (playerChoice < 1 || playerChoice > 3) {
+            cout << "Invalid choice! Please enter 1, 2, or 3: ";
+            cin >> playerChoice;
+        }
+
+        // Computer's choice
+        int computerChoice = generateComputerChoice();
+
+        // Determine the winner
+        int winner = determineWinner(playerChoice, computerChoice);
+
+        // Display the choices
